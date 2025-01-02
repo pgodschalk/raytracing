@@ -20,7 +20,7 @@
   <p align="center">
     Learning ray tracing in C++11
     <br />
-    <a href="https://github.com/pgodschalk/raytracing"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/pgodschalk/raytracing/blob/main/docs/progress-over-time.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/pgodschalk/raytracing/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
@@ -189,7 +189,7 @@ Project Link: [https://github.com/pgodschalk/raytracing](https://github.com/pgod
 [stars-url]: https://github.com/pgodschalk/raytracing/stargazers
 [issues-shield]: https://img.shields.io/github/issues/pgodschalk/raytracing.svg?style=for-the-badge
 [issues-url]: https://github.com/pgodschalk/raytracing/issues
-[license-shield]: https://img.shields.io/github/license/pgodschalk/raytracing.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/pgodschalk/raytracing?style=for-the-badge
 [license-url]: https://github.com/pgodschalk/raytracing/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/patrick-godschalk
