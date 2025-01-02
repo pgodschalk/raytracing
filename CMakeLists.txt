@@ -21,6 +21,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Include subdirectories
 add_subdirectory(src)
+add_subdirectory(tests)
 
 # Set default build type if not specified
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
