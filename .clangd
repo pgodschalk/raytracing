@@ -1,6 +1,5 @@
 CompileFlags:
   Add:
-    - "--include-directory=/path/to/include"
     - -std=c++11
 Diagnostics:
   MissingIncludes: Strict
