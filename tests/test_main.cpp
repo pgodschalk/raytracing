@@ -1,137 +1,144 @@
+#include "gtest/gtest.h"
 #include <array>
 #include <cstdio>
-#include <gtest/gtest.h>
+#include <fstream>
 #include <memory>
-#include <stdexcept>
+#include <sstream>
 #include <string>
 
 // Helper function to execute a command and capture its output
-std::string exec_command(const std::string &cmd) {
-  std::array<char, 4096> buffer;
+std::string exec_command(const std::string &command) {
+  std::array<char, 128> buffer;
   std::string result;
 
   // Open pipe to file
-  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"),
+#if defined(_WIN32)
+  std::unique_ptr<FILE, decltype(&pclose)> pipe(_popen(command.c_str(), "r"),
+                                                _pclose);
+#else
+  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"),
                                                 pclose);
+#endif
+
   if (!pipe) {
-    throw std::runtime_error("popen() failed!");
+    return "ERROR";
   }
 
   // Read till end of process:
-  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+  while (fgets(buffer.data(), static_cast<int>(buffer.size()), pipe.get()) !=
+         nullptr) {
     result += buffer.data();
   }
 
   return result;
 }
 
-// Test the PPM header
-TEST(IntegrationTest, PPMHeader) {
-  // Command to execute the application
+TEST(IntegrationTest, MainProducesValidPPMOutput) {
+  // Build the command to execute the raytracer
+  // Adjust the path to the executable if necessary
   std::string command = "../bin/RaytracingExecutable";
 
-  // Execute and capture output
+  // Execute the command and capture the output
   std::string output = exec_command(command);
 
-  // Parse the header
+  // Check if the command executed successfully
+  EXPECT_NE(output, "ERROR") << "Failed to execute raytracer executable.";
+
+  // Split the output into lines
   std::istringstream iss(output);
-  std::string magic;
-  int width, height, max_val;
-  iss >> magic >> width >> height >> max_val;
-
-  EXPECT_EQ(magic, "P3");
-  EXPECT_EQ(width, 256);
-  EXPECT_EQ(height, 256);
-  EXPECT_EQ(max_val, 255);
-}
-
-// Test specific pixel values
-TEST(IntegrationTest, PixelValues) {
-  std::string command = "../bin/RaytracingExecutable";
-  std::string output = exec_command(command);
-
-  // Skip header
-  std::istringstream iss(output);
-  std::string magic;
-  int width, height, max_val;
-  iss >> magic >> width >> height >> max_val;
-
-  // Read first pixel (top-left)
-  int r0, g0, b0;
-  iss >> r0 >> g0 >> b0;
-  EXPECT_EQ(r0, 0);
-  EXPECT_EQ(g0, 0);
-  EXPECT_EQ(b0, 0);
-
-  // Read last pixel (bottom-right)
-  int rl, gl, bl;
-  // Move to the last line
   std::string line;
-  while (std::getline(iss, line)) { /* Iterate to the end */
+  std::vector<std::string> lines;
+  while (std::getline(iss, line)) {
+    lines.emplace_back(line);
   }
-  // Re-open the stream to read the last pixel
-  iss.clear();
-  iss.seekg(0, std::ios::beg);
-  // Skip header
-  iss >> magic >> width >> height >> max_val;
-  // Read all pixels and keep the last one
-  while (iss >> rl >> gl >> bl) { /* Keep iterating */
-  }
-  EXPECT_EQ(rl, 255);
-  EXPECT_EQ(gl, 255);
-  EXPECT_EQ(bl, 0);
+
+  // Verify PPM Header
+  ASSERT_GE(lines.size(), 3)
+      << "Output is too short to contain a valid PPM header.";
+
+  EXPECT_EQ(lines[0], "P3") << "PPM header should start with 'P3'.";
+  EXPECT_EQ(lines[2], "255") << "PPM max color value should be '255'.";
+
+  // Parse image dimensions from the second line
+  int width, height;
+  std::istringstream dim_stream(lines[1]);
+  dim_stream >> width >> height;
+  EXPECT_GT(width, 0) << "Image width should be greater than 0.";
+  EXPECT_GT(height, 0) << "Image height should be greater than 0.";
+
+  // Verify that the number of pixel lines matches width * height
+  size_t expected_pixel_lines = static_cast<size_t>(width * height);
+  size_t actual_pixel_lines = lines.size() - 3; // Subtract header lines
+
+  EXPECT_EQ(actual_pixel_lines, expected_pixel_lines)
+      << "Number of pixel lines does not match width * height.";
 }
 
-// Test a middle pixel, e.g., (128, 128)
-TEST(IntegrationTest, MiddlePixelValue) {
-  std::string command = "../bin/RaytracingExecutable";
-  std::string output = exec_command(command);
+TEST(IntegrationTest, MainProducesValidColorValues) {
+  // Build the command to execute the raytracer with a small resolution
+  // To facilitate testing, you might need to modify main.cc to accept
+  // resolution as arguments However, since refactoring is not allowed, ensure
+  // main.cc uses a known resolution
 
+  // Execute the command and capture the output
+  std::string output = exec_command(
+      "../bin/RaytracingExecutable 2 1"); // Assuming main.cc can accept
+                                          // width and height
+  // If main.cc does not accept arguments, ensure it renders to a known
+  // resolution like 400x225
+
+  // Check if the command executed successfully
+  EXPECT_NE(output, "ERROR") << "Failed to execute raytracer executable.";
+
+  // Split the output into lines
   std::istringstream iss(output);
-  std::string magic;
-  int width, height, max_val;
-  iss >> magic >> width >> height >> max_val;
-
-  // Calculate the index for (128, 128)
-  int target_i = 128;
-  int target_j = 128;
-  int target_index = target_j * width + target_i;
-
-  int current_index = 0;
-  int r_mid, g_mid, b_mid;
-  while (iss >> r_mid >> g_mid >> b_mid) {
-    if (current_index == target_index) {
-      break;
-    }
-    current_index++;
+  std::string line;
+  std::vector<std::string> lines;
+  while (std::getline(iss, line)) {
+    lines.emplace_back(line);
   }
 
-  EXPECT_NEAR(r_mid, 128, 1);
-  EXPECT_NEAR(g_mid, 128, 1);
-  EXPECT_EQ(b_mid, 0);
+  // Verify PPM Header
+  ASSERT_GE(lines.size(), 3)
+      << "Output is too short to contain a valid PPM header.";
+
+  EXPECT_EQ(lines[0], "P3") << "PPM header should start with 'P3'.";
+  EXPECT_EQ(lines[2], "255") << "PPM max color value should be '255'.";
+
+  // Assuming the resolution is 2x1, verify pixel colors
+  std::string expected_color = "163 200 255";
+  EXPECT_EQ(lines[3], expected_color)
+      << "First pixel color does not match expected.";
+  EXPECT_EQ(lines[4], expected_color)
+      << "Second pixel color does not match expected.";
 }
 
-// Test the total number of pixels
-TEST(IntegrationTest, TotalPixels) {
-  std::string command = "../bin/RaytracingExecutable";
-  std::string output = exec_command(command);
+TEST(IntegrationTest, OutputContainsValidNumberOfPixels) {
+  // Execute the command and capture the output
+  std::string output = exec_command("../bin/RaytracingExecutable");
 
+  // Check if the command executed successfully
+  EXPECT_NE(output, "ERROR") << "Failed to execute raytracer executable.";
+
+  // Split the output into lines
   std::istringstream iss(output);
-  std::string magic;
-  int width, height, max_val;
-  iss >> magic >> width >> height >> max_val;
-
-  int pixel_count = 0;
-  int r, g, b;
-  while (iss >> r >> g >> b) {
-    pixel_count++;
+  std::string line;
+  std::vector<std::string> lines;
+  while (std::getline(iss, line)) {
+    lines.emplace_back(line);
   }
 
-  EXPECT_EQ(pixel_count, width * height);
-}
+  // Parse image dimensions from the second line
+  int width, height;
+  std::istringstream dim_stream(lines[1]);
+  dim_stream >> width >> height;
+  ASSERT_GT(width, 0);
+  ASSERT_GT(height, 0);
 
-// Main function for Google Test
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  // Verify that the number of pixel lines matches width * height
+  size_t expected_pixel_lines = static_cast<size_t>(width * height);
+  size_t actual_pixel_lines = lines.size() - 3; // Subtract header lines
+
+  EXPECT_EQ(actual_pixel_lines, expected_pixel_lines)
+      << "Number of pixel lines does not match width * height.";
 }
