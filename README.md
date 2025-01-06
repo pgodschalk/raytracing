@@ -61,8 +61,8 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 My implementation of learning ray tracing in C++11. This project is based on
-the book "Ray Tracing in One Weekend" by Peter Shirley. The book is available
-for free on the internet and can be found [here](https://raytracing.github.io).
+the book
+[_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,7 +175,7 @@ Project Link: [https://github.com/pgodschalk/raytracing](https://github.com/pgod
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Ray Tracing in One Weekend](https://raytracing.github.io)
+* [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
