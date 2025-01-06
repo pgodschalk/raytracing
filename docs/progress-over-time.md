@@ -18,4 +18,10 @@ A blue-to-white gradient depending on ray Y coordinate
 
 A simple red sphere
 
-![1.2](./3.png)
+![1.3](./3.png)
+
+# 1.4
+
+A sphere colored according to its normal vectors
+
+![1.4](./4.png)
