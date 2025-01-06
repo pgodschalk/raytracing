@@ -25,3 +25,7 @@ A simple red sphere
 A sphere colored according to its normal vectors
 
 ![1.4](./4.png)
+
+Resulting render of normals-colored sphere with ground
+
+![1.4](./5.png)
