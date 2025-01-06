@@ -13,3 +13,9 @@ This is the graphics “hello world”.
 A blue-to-white gradient depending on ray Y coordinate
 
 ![1.2](./2.png)
+
+# 1.3
+
+A simple red sphere
+
+![1.2](./3.png)
