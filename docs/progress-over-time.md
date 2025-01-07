@@ -29,3 +29,9 @@ A sphere colored according to its normal vectors
 Resulting render of normals-colored sphere with ground
 
 ![1.4](./5.png)
+
+# 1.5
+
+Added antialiasing.
+
+![1.5](./6.png)
