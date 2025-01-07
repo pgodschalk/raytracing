@@ -1,62 +1,45 @@
 #include "raytracing/color.h"
-
 #include <gtest/gtest.h>
 #include <sstream>
+#include <string>
 
-// Test case for black color
-TEST(WriteColorTest, BlackColor) {
-  vec3 black(0.0, 0.0, 0.0);
-  std::stringstream ss;
-  write_color(ss, black);
-  EXPECT_EQ(ss.str(), "0 0 0\n");
+// Helper function to compare expected and actual output
+void ExpectWriteColor(const color &pixel_color,
+                      const std::string &expected_output) {
+  std::ostringstream out;
+  write_color(out, pixel_color);
+  EXPECT_EQ(out.str(), expected_output);
 }
 
-// Test case for white color
-TEST(WriteColorTest, WhiteColor) {
-  vec3 white(1.0, 1.0, 1.0);
-  std::stringstream ss;
-  write_color(ss, white);
-  EXPECT_EQ(ss.str(), "255 255 255\n");
+TEST(ColorTest, BlackColorWritesCorrectly) {
+  color black(0.0, 0.0, 0.0);
+  ExpectWriteColor(black, "0 0 0\n");
 }
 
-// Test case for middle gray
-TEST(WriteColorTest, MiddleGray) {
-  vec3 gray(0.5, 0.5, 0.5);
-  std::stringstream ss;
-  write_color(ss, gray);
-  // 255.999 * 0.5 = 127.9995 -> int casting truncates to 127
-  EXPECT_EQ(ss.str(), "127 127 127\n");
+TEST(ColorTest, WhiteColorWritesCorrectly) {
+  color white(1.0, 1.0, 1.0);
+  ExpectWriteColor(white, "255 255 255\n");
 }
 
-// Test case for arbitrary color
-TEST(WriteColorTest, ArbitraryColor) {
-  vec3 color(0.25, 0.75, 0.5);
-  std::stringstream ss;
-  write_color(ss, color);
-  EXPECT_EQ(ss.str(), "63 191 127\n"); // 255.999*0.25≈63.99975, etc.
+TEST(ColorTest, MidGrayColorWritesCorrectly) {
+  color gray(0.5, 0.5, 0.5);
+  ExpectWriteColor(gray, "127 127 127\n");
 }
 
-// Test case for colors exceeding 1.0
-TEST(WriteColorTest, ExceedingColors) {
-  vec3 color(1.5, 2.0, 3.0);
-  std::stringstream ss;
-  write_color(ss, color);
-  EXPECT_EQ(ss.str(), "383 511 767\n"); // No clamping applied
+TEST(ColorTest, BoundaryColorWritesCorrectly_JustBelowOne) {
+  color near_max(0.999, 0.999, 0.999);
+  ExpectWriteColor(near_max, "255 255 255\n");
 }
 
-// Test case for negative colors
-TEST(WriteColorTest, NegativeColors) {
-  vec3 color(-0.1, -0.5, -1.0);
-  std::stringstream ss;
-  write_color(ss, color);
-  EXPECT_EQ(ss.str(), "-25 -127 -255\n"); // Negative values handled by casting
+TEST(ColorTest, BoundaryColorWritesCorrectly_JustAboveZero) {
+  color near_min(0.001, 0.001, 0.001);
+  ExpectWriteColor(near_min, "0 0 0\n");
 }
 
-// Test case for edge values
-TEST(WriteColorTest, EdgeValues) {
-  vec3 color(0.0, 1.0, 0.999);
-  std::stringstream ss;
-  write_color(ss, color);
-  EXPECT_EQ(ss.str(),
-            "0 255 255\n"); // 255.999 * 0.999 ≈ 255.743, truncates to 255
+TEST(ColorTest, MixedColorWritesCorrectly) {
+  color mixed(0.1, 0.5, 0.9);
+  // int(255.999 * 0.1) = 25.5999 -> 25
+  // int(255.999 * 0.5) = 127.9995 -> 127
+  // int(255.999 * 0.9) = 230.3991 -> 230
+  ExpectWriteColor(mixed, "25 127 230\n");
 }

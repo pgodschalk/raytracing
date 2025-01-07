@@ -1,9 +1,10 @@
 #ifndef HITTABLE_LIST_H
 #define HITTABLE_LIST_H
 
-#include "hittable.h"
-#include "ray.h"
-
+#include "raytracing/hittable.h"
+#include "raytracing/interval.h"
+#include "raytracing/ray.h"
+#include "raytracing/rtweekend.h"
 #include <vector>
 
 class hittable_list : public hittable {

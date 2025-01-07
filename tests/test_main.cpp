@@ -1,10 +1,11 @@
 #include "gtest/gtest.h"
+#include <_stdio.h>
 #include <array>
 #include <cstdio>
-#include <fstream>
 #include <memory>
 #include <sstream>
 #include <string>
+#include <vector>
 
 // Helper function to execute a command and capture its output
 std::string exec_command(const std::string &command) {

@@ -1,7 +1,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include "vec3.h"
+#include "raytracing/vec3.h"
+#include <ostream>
 
 using color = vec3;
 

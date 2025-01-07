@@ -1,8 +1,10 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "hittable.h"
-#include "ray.h"
+#include "raytracing/hittable.h"
+#include "raytracing/interval.h"
+#include "raytracing/ray.h"
+#include "raytracing/vec3.h"
 #include <cmath>
 
 class sphere : public hittable {
