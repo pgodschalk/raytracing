@@ -30,7 +30,8 @@ jobs:
       - name: Set up C++
         run: |
           sudo apt-get update && sudo apt-get install -y \
-            cmake
+            cmake \
+            libc6-dev
         shell: bash
 
       - name: Build
