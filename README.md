@@ -18,7 +18,7 @@
 <h3 align="center">@pgodschalk/raytracing</h3>
 
   <p align="center">
-    Learning ray tracing in C++11
+    Learning ray tracing in C++17
     <br />
     <a href="https://github.com/pgodschalk/raytracing/blob/main/docs/progress-over-time.md"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,7 +60,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-My implementation of learning ray tracing in C++11. This project is based on
+My implementation of learning ray tracing in C++17. This project is based on
 the book
 [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html).
 
