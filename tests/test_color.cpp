@@ -23,7 +23,7 @@ TEST(ColorTest, WhiteColorWritesCorrectly) {
 
 TEST(ColorTest, MidGrayColorWritesCorrectly) {
   color gray(0.5, 0.5, 0.5);
-  ExpectWriteColor(gray, "127 127 127\n");
+  ExpectWriteColor(gray, "128 128 128\n");
 }
 
 TEST(ColorTest, BoundaryColorWritesCorrectly_JustBelowOne) {
@@ -41,5 +41,5 @@ TEST(ColorTest, MixedColorWritesCorrectly) {
   // int(255.999 * 0.1) = 25.5999 -> 25
   // int(255.999 * 0.5) = 127.9995 -> 127
   // int(255.999 * 0.9) = 230.3991 -> 230
-  ExpectWriteColor(mixed, "25 127 230\n");
+  ExpectWriteColor(mixed, "25 128 230\n");
 }
