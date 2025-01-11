@@ -45,3 +45,7 @@ First render of a diffuse sphere
 Diffuse sphere with no shadow acne
 
 ![1.6](./8.png)
+
+Correct rendering of Lambertian spheres
+
+![1.6](./9.png)
