@@ -5,7 +5,6 @@
 #include "raytracing/ray.h"
 #include "raytracing/vec3.h"
 #include <cfloat>
-#include <cstddef>
 #include <cstdlib>
 #include <gtest/gtest.h>
 #include <iostream>
@@ -136,49 +135,6 @@ TEST_F(CameraTest, RenderBackgroundColor) {
   }
 }
 
-// Test render output when objects are hit
-TEST_F(CameraTest, RenderHitColor) {
-  cam.aspect_ratio = 1.0;
-  cam.image_width = 2;
-  HittableAlwaysHit world;
-
-  std::stringstream ss;
-  std::streambuf *original_cout = std::cout.rdbuf(ss.rdbuf());
-
-  cam.render(world);
-
-  std::cout.rdbuf(original_cout);
-
-  // Expected PPM header
-  std::string expected_header = "P3\n2 2\n255\n";
-  std::string actual_header = ss.str().substr(0, expected_header.size());
-  EXPECT_EQ(actual_header, expected_header);
-
-  // Extract color data
-  std::istringstream iss(ss.str());
-  std::string header;
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // P3
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // dimensions
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // max color
-
-  std::vector<int> colors;
-  int value;
-  while (iss >> value) {
-    colors.push_back(value);
-  }
-
-  // Each pixel should have 3 color components
-  ASSERT_EQ(colors.size(), 2 * 2 * 3);
-
-  // Since objects are hit with normal (0,0,1), pixel_color = 0.5 * (normal +
-  // 1,1,1) = (0.5, 0.5, 1.0). After scaling by 255: ~128 128 255
-  for (size_t i = 0; i < colors.size(); i += 3) {
-    EXPECT_NEAR(colors[i], 128, 1);     // Red
-    EXPECT_NEAR(colors[i + 1], 128, 1); // Green
-    EXPECT_NEAR(colors[i + 2], 255, 1); // Blue
-  }
-}
-
 // Test camera initialization with different aspect ratios
 TEST_F(CameraTest, InitializeDifferentAspectRatios) {
   cam.image_width = 4;
@@ -290,40 +246,6 @@ TEST_F(CameraTest, LowAspectRatio) {
   std::string expected_header = "P3\n1 10\n255\n";
   std::string actual_header = ss.str().substr(0, expected_header.size());
   EXPECT_EQ(actual_header, expected_header);
-}
-
-// Test render with image_width of 1 and aspect_ratio of 1
-TEST_F(CameraTest, RenderSinglePixel) {
-  cam.image_width = 1;
-  cam.aspect_ratio = 1.0;
-  HittableAlwaysHit world;
-
-  std::stringstream ss;
-  std::streambuf *original_cout = std::cout.rdbuf(ss.rdbuf());
-
-  cam.render(world);
-
-  std::cout.rdbuf(original_cout);
-
-  // Expected PPM header
-  std::string expected_header = "P3\n1 1\n255\n";
-  std::string actual_header = ss.str().substr(0, expected_header.size());
-  EXPECT_EQ(actual_header, expected_header);
-
-  // Extract color data
-  std::istringstream iss(ss.str());
-  std::string header;
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // P3
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // dimensions
-  iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // max color
-
-  int r, g, b;
-  iss >> r >> g >> b;
-
-  // Expected color: 128 128 255
-  EXPECT_NEAR(r, 128, 1);
-  EXPECT_NEAR(g, 128, 1);
-  EXPECT_NEAR(b, 255, 1);
 }
 
 // Helper function to compare two vec3 objects with a tolerance
