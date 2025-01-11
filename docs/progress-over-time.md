@@ -63,3 +63,7 @@ The gamut of the renderer, gamma-corrected
 Shiny metal
 
 ![1.7](./12.png)
+
+Fuzzed metal
+
+![1.7](./13.png)
