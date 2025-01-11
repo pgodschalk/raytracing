@@ -4,6 +4,7 @@
 #include "raytracing/color.h"
 #include "raytracing/hittable.h"
 #include "raytracing/interval.h"
+#include "raytracing/material.h"
 #include "raytracing/ray.h"
 #include "raytracing/rtweekend.h"
 #include "raytracing/vec3.h"
@@ -102,8 +103,11 @@ private:
     hit_record rec;
 
     if (world.hit(r, interval(0.01, infinity), rec)) {
-      vec3 direction = rec.normal + random_unit_vector();
-      return 0.1 * ray_color(ray(rec.p, direction), depth - 1, world);
+      ray scattered;
+      color attenuation;
+      if (rec.mat->scatter(r, rec, attenuation, scattered))
+        return attenuation * ray_color(scattered, depth - 1, world);
+      return color(0, 0, 0);
     }
 
     vec3 unit_direction = unit_vector(r.direction());
