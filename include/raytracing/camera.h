@@ -95,7 +95,9 @@ private:
 
   color ray_color(const ray &r, const hittable &world) const {
     hit_record rec;
-    if (world.hit(r, interval(0, infinity), rec)) {
+
+    // FIXME: 0.01 and lower min interval results in a segfault
+    if (world.hit(r, interval(0.1, infinity), rec)) {
       vec3 direction = random_on_hemisphere(rec.normal);
       return 0.5 * ray_color(ray(rec.p, direction), world);
     }
