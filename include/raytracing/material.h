@@ -33,21 +33,21 @@ public:
     return true;
   }
 
-  class metal : public material {
-  public:
-    metal(const color &albedo) : albedo(albedo) {}
+private:
+  color albedo;
+};
 
-    bool scatter(const ray &r_in, const hit_record &rec, color &attenuation,
-                 ray &scattered) const override {
-      vec3 reflected = reflect(r_in.direction(), rec.normal);
-      scattered = ray(rec.p, reflected);
-      attenuation = albedo;
-      return true;
-    }
+class metal : public material {
+public:
+  metal(const color &albedo) : albedo(albedo) {}
 
-  private:
-    color albedo;
-  };
+  bool scatter(const ray &r_in, const hit_record &rec, color &attenuation,
+               ray &scattered) const override {
+    vec3 reflected = reflect(r_in.direction(), rec.normal);
+    scattered = ray(rec.p, reflected);
+    attenuation = albedo;
+    return true;
+  }
 
 private:
   color albedo;
