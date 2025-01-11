@@ -49,3 +49,7 @@ Diffuse sphere with no shadow acne
 Correct rendering of Lambertian spheres
 
 ![1.6](./9.png)
+
+Testing the gamut of the renderer so far, at 10%, 30%, 50%, 70% and 90% reflectance
+
+![1.6](./10.gif)
