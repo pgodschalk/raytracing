@@ -53,3 +53,7 @@ Correct rendering of Lambertian spheres
 Testing the gamut of the renderer so far, at 10%, 30%, 50%, 70% and 90% reflectance
 
 ![1.6](./10.gif)
+
+The gamut of the renderer, gamma-corrected
+
+![1.6](./11.gif)
