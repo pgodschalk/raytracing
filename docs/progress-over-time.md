@@ -35,3 +35,9 @@ Resulting render of normals-colored sphere with ground
 Added antialiasing.
 
 ![1.5](./6.png)
+
+# 1.6
+
+First render of a diffuse sphere
+
+![1.6](./7.png)
