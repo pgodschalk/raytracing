@@ -41,3 +41,7 @@ Added antialiasing.
 First render of a diffuse sphere
 
 ![1.6](./7.png)
+
+Diffuse sphere with no shadow acne
+
+![1.6](./8.png)
