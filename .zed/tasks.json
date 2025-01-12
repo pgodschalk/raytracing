@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Configure (debug)",
+    "command": "cmake",
+    "args": ["-DCMAKE_BUILD_TYPE=Debug", "-B", "build/"]
+  },
+  {
+    "label": "Configure (release)",
+    "command": "cmake",
+    "args": ["-DCMAKE_BUILD_TYPE=Release", "-B", "build/"]
+  },
+  {
+    "label": "Build",
+    "command": "cmake",
+    "args": ["--build", "build/"]
+  },
+  {
+    "label": "Test",
+    "command": "ctest",
+    "args": ["--output-on-failure", "--test-dir", "build/tests/"]
+  }
+]
