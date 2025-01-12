@@ -81,3 +81,9 @@ Air bubble sometimes refracts, sometimes reflects
 A hollow glass sphere
 
 ![1.8](./images/16.png)
+
+# 1.9
+
+A wide-angle view
+
+![1.9](./images/17.png)
