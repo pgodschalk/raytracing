@@ -94,12 +94,11 @@ To get a local copy up and running follow these simple example steps.a
 2. Create a build dir
    ```sh
    mkdir -p build
-   cd build
    ```
 4. Compile the binary
    ```sh
-   cmake ..
-   cmake --build .
+   cmake -DCMAKE_BUILD_TYPE=Release -B build/
+   cmake --build build/
    ```
 5. Change git remote url to avoid accidental pushes to base project
    ```sh
