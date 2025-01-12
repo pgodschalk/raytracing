@@ -73,3 +73,7 @@ Fuzzed metal
 Glass sphere that always refracts
 
 ![1.8](./14.png)
+
+Air bubble sometimes refracts, sometimes reflects
+
+![1.8](./15.png)
