@@ -37,15 +37,13 @@ jobs:
       - name: Build
         run: |
           mkdir -p build
-          cd build
-          cmake ..
-          cmake --build .
+          cmake -DCMAKE_BUILD_TYPE=Release -B build/
+          cmake --build build
         shell: bash
 
       - name: Test
         run: |
-          cd build
-          ctest --test-dir tests --output-on-failure
+          ctest --output-on-failure --test-dir build/tests/
         shell: bash
 
       - if: startsWith(github.ref, 'refs/tags/')
