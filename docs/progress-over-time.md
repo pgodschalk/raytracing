@@ -67,3 +67,9 @@ Shiny metal
 Fuzzed metal
 
 ![1.7](./13.png)
+
+# 1.8
+
+Glass sphere that always refracts
+
+![1.8](./14.png)
