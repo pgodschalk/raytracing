@@ -77,3 +77,7 @@ Glass sphere that always refracts
 Air bubble sometimes refracts, sometimes reflects
 
 ![1.8](./15.png)
+
+A hollow glass sphere
+
+![1.8](./16.png)
