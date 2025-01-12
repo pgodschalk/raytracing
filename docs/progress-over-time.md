@@ -87,3 +87,11 @@ A hollow glass sphere
 A wide-angle view
 
 ![1.9](./images/17.png)
+
+A distant view
+
+![1.9](./images/18.png)
+
+Zooming in
+
+![1.9](./images/19.png)
