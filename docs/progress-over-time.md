@@ -95,3 +95,9 @@ A distant view
 Zooming in
 
 ![1.9](./images/19.png)
+
+# 1.10
+
+Spheres with depth-of-field
+
+![1.10](./images/20.png)
