@@ -75,7 +75,7 @@ the book
 <!-- GETTING STARTED -->
 ## Getting started
 
-To get a local copy up and running follow these simple example steps.a
+To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
