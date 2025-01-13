@@ -101,3 +101,9 @@ Zooming in
 Spheres with depth-of-field
 
 ![1.10](./images/20.png)
+
+# 1.11
+
+Final scene
+
+![1.11](./images/21.png)
