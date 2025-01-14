@@ -48,3 +48,8 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
   DESTINATION include
   FILES_MATCHING PATTERN "*.h*"
 )
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  include(CTest)
+  enable_testing()
+endif()
