@@ -61,8 +61,10 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 My implementation of learning ray tracing in C++17. This project is based on
-the book
+the books
 [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html).
+and
+[_Ray Tracing: The Next Week_](https://raytracing.github.io/books/RayTracingTheNextWeek.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,6 +177,7 @@ Project Link: [https://github.com/pgodschalk/raytracing](https://github.com/pgod
 ## Acknowledgments
 
 * [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+* [_Ray Tracing: The Next Week_](https://raytracing.github.io/books/RayTracingTheNextWeek.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
