@@ -107,3 +107,9 @@ Spheres with depth-of-field
 Final scene
 
 ![1.11](./images/21.png)
+
+# 2.0
+
+Bouncing spheres
+
+![2.0](./images/22.png)
