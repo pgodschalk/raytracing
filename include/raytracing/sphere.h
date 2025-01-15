@@ -1,6 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "raytracing/aabb.h"
 #include "raytracing/hittable.h"
 #include "raytracing/interval.h"
 #include "raytracing/ray.h"
@@ -13,7 +14,10 @@ public:
   // Stationary Sphere
   sphere(const point3 &static_center, double radius, shared_ptr<material> mat)
       : center(static_center, vec3(0, 0, 0)), radius(std::fmax(0, radius)),
-        mat(mat) {}
+        mat(mat) {
+    auto rvec = vec3(radius, radius, radius);
+    bbox = aabb(static_center - rvec, static_center + rvec);
+  }
 
   // Moving Sphere
   sphere(const point3 &center1, const point3 &center2, double radius,
@@ -51,10 +55,13 @@ public:
     return true;
   }
 
+  aabb bounding_box() const override { return bbox; }
+
 private:
   ray center;
   double radius;
   shared_ptr<material> mat;
+  aabb bbox;
 };
 
 #endif

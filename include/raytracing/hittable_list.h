@@ -1,6 +1,7 @@
 #ifndef HITTABLE_LIST_H
 #define HITTABLE_LIST_H
 
+#include "raytracing/aabb.h"
 #include "raytracing/hittable.h"
 #include "raytracing/interval.h"
 #include "raytracing/ray.h"
@@ -16,7 +17,10 @@ public:
 
   void clear() { objects.clear(); }
 
-  void add(shared_ptr<hittable> object) { objects.push_back(object); }
+  void add(shared_ptr<hittable> object) {
+    objects.push_back(object);
+    bbox = aabb(bbox, object->bounding_box());
+  }
 
   bool hit(const ray &r, interval ray_t, hit_record &rec) const override {
     hit_record temp_rec;
@@ -33,6 +37,11 @@ public:
 
     return hit_anything;
   }
+
+  aabb bounding_box() const override { return bbox; }
+
+private:
+  aabb bbox;
 };
 
 #endif
