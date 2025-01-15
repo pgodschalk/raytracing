@@ -62,7 +62,7 @@
 
 ## About the project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Raytracing][product-screenshot]](https://github.com/pgodschalk/raytracing)
 
 My implementation of learning ray tracing in C++17. This project is based on
 the books
