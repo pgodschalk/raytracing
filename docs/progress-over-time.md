@@ -113,3 +113,9 @@ Final scene
 Bouncing spheres
 
 ![2.0](./images/22.png)
+
+# 2.2
+
+Spheres on checkered ground
+
+![2.2](./images/23.png)
