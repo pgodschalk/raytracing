@@ -123,3 +123,7 @@ Spheres on checkered ground
 Checkered spheres
 
 ![2.2](./images/24.png)
+
+Earth-mapped sphere
+
+![2.2](./images/25.png)
