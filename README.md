@@ -1,6 +1,9 @@
+<!-- markdownlint-disable -->
+
 <a id="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -56,6 +59,7 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About the project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
@@ -70,18 +74,19 @@ and
 
 ### Built with
 
-* [![C++][cpp]][cpp-url]
+- [![C++][cpp]][cpp-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting started
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* [CMake](https://cmake.org)
+- [CMake](https://cmake.org)
   ```sh
   asdf plugin add cmake https://github.com/asdf-community/asdf-cmake.git
   asdf install cmake 3.31.3 && asdf global cmake 3.31.3
@@ -97,12 +102,12 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    mkdir -p build
    ```
-4. Compile the binary
+3. Compile the binary
    ```sh
    cmake -DCMAKE_BUILD_TYPE=Release -B build/
    cmake --build build/
    ```
-5. Change git remote url to avoid accidental pushes to base project
+4. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin pgodschalk/raytracing
    git remote -v # confirm the changes
@@ -111,6 +116,7 @@ To get a local copy up and running follow these simple example steps.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 ```sh
@@ -129,6 +135,7 @@ _For more examples, please refer to the [Documentation](https://github.com/pgods
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/pgodschalk/raytracing/issues) for a full list of proposed features (and known issues).
@@ -136,6 +143,7 @@ See the [open issues](https://github.com/pgodschalk/raytracing/issues) for a ful
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -158,6 +166,7 @@ Don't forget to give the project a star! Thanks again!
 </a>
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the CC0 1.0 Universal. See `LICENSE.txt` for more information.
@@ -165,6 +174,7 @@ Distributed under the CC0 1.0 Universal. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
+
 ## Contact
 
 Patrick Godschalk - [@kernelpanics.nl](https://bsky.app/profile/kernelpanics.nl) - patrick@kernelpanics.nl
@@ -174,15 +184,17 @@ Project Link: [https://github.com/pgodschalk/raytracing](https://github.com/pgod
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
-* [_Ray Tracing: The Next Week_](https://raytracing.github.io/books/RayTracingTheNextWeek.html)
+- [_Ray Tracing in One Weekend_](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- [_Ray Tracing: The Next Week_](https://raytracing.github.io/books/RayTracingTheNextWeek.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/pgodschalk/raytracing.svg?style=for-the-badge
 [contributors-url]: https://github.com/pgodschalk/raytracing/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/pgodschalk/raytracing.svg?style=for-the-badge
