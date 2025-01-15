@@ -119,3 +119,7 @@ Bouncing spheres
 Spheres on checkered ground
 
 ![2.2](./images/23.png)
+
+Checkered spheres
+
+![2.2](./images/24.png)
