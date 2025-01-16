@@ -137,3 +137,7 @@ Hashed random texture
 Perlin texture with trilinear interpolation
 
 ![2.3](./images/27.png)
+
+Perlin texture, trilinearly interpolated, smoothed
+
+![2.3](./images/28.png)
