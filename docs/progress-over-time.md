@@ -162,4 +162,4 @@ Perlin noise, marbled texture
 
 Quads
 
-![2.4](./images/32.png)
+![2.4](./images/33.png)
