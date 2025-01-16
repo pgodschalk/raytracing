@@ -155,3 +155,11 @@ Perlin texture with turbulence
 ![2.3](./images/31.png)
 
 Perlin noise, marbled texture
+
+![2.3](./images/32.png)
+
+# 2.4
+
+Quads
+
+![2.4](./images/32.png)
