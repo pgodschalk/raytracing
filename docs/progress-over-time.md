@@ -145,3 +145,7 @@ Perlin texture, trilinearly interpolated, smoothed
 Perlin texture, higher frequency
 
 ![2.3](./images/29.png)
+
+Perlin texture, shifted off integer values
+
+![2.3](./images/30.png)
