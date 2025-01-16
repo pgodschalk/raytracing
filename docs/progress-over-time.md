@@ -127,3 +127,9 @@ Checkered spheres
 Earth-mapped sphere
 
 ![2.2](./images/25.png)
+
+# 2.3
+
+Hashed random texture
+
+![2.3](./images/26.png)
