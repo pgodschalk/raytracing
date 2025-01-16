@@ -133,3 +133,7 @@ Earth-mapped sphere
 Hashed random texture
 
 ![2.3](./images/26.png)
+
+Perlin texture with trilinear interpolation
+
+![2.3](./images/27.png)
