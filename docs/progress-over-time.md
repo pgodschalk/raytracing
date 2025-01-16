@@ -153,3 +153,5 @@ Perlin texture, shifted off integer values
 Perlin texture with turbulence
 
 ![2.3](./images/31.png)
+
+Perlin noise, marbled texture
