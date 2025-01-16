@@ -3,6 +3,7 @@
 
 #include "raytracing/color.h"
 #include "raytracing/interval.h"
+#include "raytracing/perlin.h"
 #include "raytracing/rtw_stb_image.h"
 #include "raytracing/rtweekend.h"
 #include "raytracing/vec3.h"
@@ -80,6 +81,18 @@ public:
 
 private:
   rtw_image image;
+};
+
+class noise_texture : public texture {
+public:
+  noise_texture() {}
+
+  color value(double u, double v, const point3 &p) const override {
+    return color(1, 1, 1) * noise.noise(p);
+  }
+
+private:
+  perlin noise;
 };
 
 #endif
