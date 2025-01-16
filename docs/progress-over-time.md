@@ -149,3 +149,7 @@ Perlin texture, higher frequency
 Perlin texture, shifted off integer values
 
 ![2.3](./images/30.png)
+
+Perlin texture with turbulence
+
+![2.3](./images/31.png)
