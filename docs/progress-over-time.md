@@ -163,3 +163,9 @@ Perlin noise, marbled texture
 Quads
 
 ![2.4](./images/33.png)
+
+# 2.5
+
+Scene with rectacngle light source
+
+![2.5](./images/34.png)
