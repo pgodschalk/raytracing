@@ -173,3 +173,7 @@ Scene with rectangle light source
 Scene with rectangle and sphere light sources
 
 ![2.5](./images/35.png)
+
+Empty Cornell box
+
+![2.5](./images/36.png)
