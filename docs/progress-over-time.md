@@ -166,6 +166,10 @@ Quads
 
 # 2.5
 
-Scene with rectacngle light source
+Scene with rectangle light source
 
 ![2.5](./images/34.png)
+
+Scene with rectangle and sphere light sources
+
+![2.5](./images/35.png)
