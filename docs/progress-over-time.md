@@ -181,3 +181,9 @@ Empty Cornell box
 Cornell box with two blocks
 
 ![2.5](./images/37.png)
+
+# 2.6
+
+Standard Cornell box scene
+
+![2.6](./images/38.png)
