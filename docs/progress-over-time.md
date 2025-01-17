@@ -177,3 +177,7 @@ Scene with rectangle and sphere light sources
 Empty Cornell box
 
 ![2.5](./images/36.png)
+
+Cornell box with two blocks
+
+![2.5](./images/37.png)
