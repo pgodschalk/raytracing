@@ -187,3 +187,9 @@ Cornell box with two blocks
 Standard Cornell box scene
 
 ![2.6](./images/38.png)
+
+# 2.7
+
+Cornell box with blocks of smoke
+
+![2.7](./images/39.png)
